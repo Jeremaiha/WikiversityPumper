@@ -1,4 +1,4 @@
-
+#functions which will write the queries
 
 
 
