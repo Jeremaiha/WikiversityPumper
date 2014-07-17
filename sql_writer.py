@@ -34,4 +34,4 @@ list_tables = ['Android_Challenges.table','Assembly_Challenges.table','Blender_3
 		'Math_Challenges.table','PHP_Challenges.table','Python_Challenges.table','Resources_Challenges.table',
 		'Reversing_Challenges.table','Security_Challenges.table','Thinking_Challenges.table']
 		
-		
+sql_parsing("Python_Challenges.table")	
