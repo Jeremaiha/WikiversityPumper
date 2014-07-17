@@ -10,10 +10,13 @@ def sql_parsing(file_name):
     file_obj = open(file_name)
     array = []
     for line in file_obj:
-		array.append(line)
+        array.append(line)
     file_obj.close()
-    print array
-
+    array = array[1:len(array)] #get a sublist from the list, because we don't need the first line of tables
+    
+    for i in range(len(array)):
+	print str(i) + array[i] + '   end'
+	
 #end of sql parsing
 
 def inject_challenges(table_name):
