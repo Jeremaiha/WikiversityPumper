@@ -22,16 +22,16 @@ def sql_parsing(file_name):
             temp_string = array[i]
             tmp_list = re.split('\t',temp_string)
             #print tmp_list
-            tmp_list = tmp_list[1:len(tmp_list)]
+            tmp_list = tmp_list[1:len(tmp_list)-1]
             for j in range(len(tmp_list)):
             	begin_str = begin_str + tmp_list[j]
             	if(j+2 != len(tmp_list)):
             		begin_str = begin_str + ','
             #end of first line, adding the ending if necessary
             if(i+1 != len(array)): #not last value
-            	begin_str = begin_str + '),'
+            	begin_str = begin_str + '),\n'
             else:
-            	begin_str = begin_str + ');'
+            	begin_str = begin_str + ');\n'
             #print begin_str
             string_return = string_return + begin_str
     return string_return
