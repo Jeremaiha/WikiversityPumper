@@ -7,11 +7,12 @@ def text_writer(file_name ,txt):
 # End of text_writer
 
 def sql_parsing(file_name):
-	file_obj = open(file_name)
-	lines = file_obj.readlines()
-	print lines
-	file_obj.close()
-	return lines	
+    file_obj = open(file_name)
+    array = []
+    for line in file_obj:
+		array.append(line)
+    file_obj.close()
+    print array
 
 #end of sql parsing
 
