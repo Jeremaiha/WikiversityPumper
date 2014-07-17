@@ -1,4 +1,5 @@
 #functions which will write the queries
+import re
 
 def text_writer(file_name ,txt):
 	file_obj = open(file_name, 'w')
@@ -15,8 +16,10 @@ def sql_parsing(file_name):
     array = array[1:len(array)] #get a sublist from the list, because we don't need the first line of tables
     
     for i in range(len(array)):
-	print str(i) + array[i] + '   end'
-	
+	begin_str = '('
+	end_str = '),'
+	re.split('\\t')
+	print str(i) + ") " + array[i] + 'end\n' 
 #end of sql parsing
 
 def inject_challenges(table_name):
