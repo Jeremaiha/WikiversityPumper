@@ -14,37 +14,39 @@ def sql_parsing(file_name):
         array.append(line)
     file_obj.close()
     array = array[1:len(array)] #get a sublist from the list, because we don't need the first line of tables
-    
+    string_return = ""
     for i in range(len(array)):
             begin_str = '('
             end_str = '),'
             final_str = ');'
             temp_string = array[i]
             tmp_list = re.split('\t',temp_string)
-            print tmp_list
+            #print tmp_list
             tmp_list = tmp_list[1:len(tmp_list)]
             for j in range(len(tmp_list)):
             	begin_str = begin_str + tmp_list[j]
-            	if(j+1 != len(tmp_list)):
+            	if(j+2 != len(tmp_list)):
             		begin_str = begin_str + ','
             #end of first line, adding the ending if necessary
             if(i+1 != len(array)): #not last value
-            	begin_str = begin_str + end_str;
+            	begin_str = begin_str + '),'
             else:
-            	begin_str = begin_str + final_str;
-            print begin_str + 'end\n'
-            
+            	begin_str = begin_str + ');'
+            #print begin_str
+            string_return = string_return + begin_str
+    return string_return
 #end of sql parsing
 
 def inject_challenges(table_name):
 	print "Starting " + str(table_name) + " challenge query"
   
-	table_creation = "ALTER TABLE " + str(table_name) + "AUTO_INCREMENT = 1;"
+	table_creation = "ALTER TABLE " + str(table_name) + "AUTO_INCREMENT = 1;\n"
 	table_insertion = "insert into " + str(table_name)
-	table_parameters = "(challengeName,points,mentor,description,multi_uni,deadline)" + " VALUES" 
+	table_parameters = "(challengeName,points,mentor,description,multi_uni,deadline)" + " VALUES\n" 
 	insert_query = table_creation + table_insertion + table_parameters
-  
-  
+	text = insert_query+sql_parsing(table_name)
+  	table_name += '.sql'
+  	text_writer(table_name,text)
   
 #end of inject challenges
 
