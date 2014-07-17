@@ -16,10 +16,24 @@ def sql_parsing(file_name):
     array = array[1:len(array)] #get a sublist from the list, because we don't need the first line of tables
     
     for i in range(len(array)):
-	begin_str = '('
-	end_str = '),'
-	re.split('\\t')
-	print str(i) + ") " + array[i] + 'end\n' 
+            begin_str = '('
+            end_str = '),'
+            final_str = ');'
+            temp_string = array[i]
+            tmp_list = re.split('\t',temp_string)
+            print tmp_list
+            tmp_list = tmp_list[1:len(tmp_list)]
+            for j in range(len(tmp_list)):
+            	begin_str = begin_str + tmp_list[j]
+            	if(j+1 != len(tmp_list)):
+            		begin_str = begin_str + ','
+            #end of first line, adding the ending if necessary
+            if(i+1 != len(array)): #not last value
+            	begin_str = begin_str + end_str;
+            else:
+            	begin_str = begin_str + final_str;
+            print begin_str + 'end\n'
+            
 #end of sql parsing
 
 def inject_challenges(table_name):
