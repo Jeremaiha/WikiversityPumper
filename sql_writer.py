@@ -6,13 +6,22 @@ def text_writer(file_name ,txt):
 	file_obj.close()
 # End of text_writer
 
+def sql_parsing(file_name):
+	file_obj = open(file_name)
+	lines = file_obj.readlines()
+	print lines
+	file_obj.close()
+	return lines	
+
+#end of sql parsing
+
 def inject_challenges(table_name):
-  print "Starting " + str(table_name) + " challenge query"
+	print "Starting " + str(table_name) + " challenge query"
   
-  table_creation = "ALTER TABLE " + str(table_name) + "AUTO_INCREMENT = 1;"
-  table_insertion = "insert into " + str(table_name)
-  table_parameters = "(challengeName,points,mentor,description,multi_uni,deadline)" + " VALUES" 
-  insert_query = table_creation + table_insertion + table_parameters
+	table_creation = "ALTER TABLE " + str(table_name) + "AUTO_INCREMENT = 1;"
+	table_insertion = "insert into " + str(table_name)
+	table_parameters = "(challengeName,points,mentor,description,multi_uni,deadline)" + " VALUES" 
+	insert_query = table_creation + table_insertion + table_parameters
   
   
   
