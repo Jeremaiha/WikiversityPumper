@@ -44,9 +44,10 @@ def inject_challenges(table_name):
 	table_insertion = "insert into " + str(table_name)
 	table_parameters = "(challengeName,points,mentor,description,multi_uni,deadline)" + " VALUES\n" 
 	insert_query = table_creation + table_insertion + table_parameters
+	print "Creating File"
 	text = insert_query+sql_parsing(table_name)
-  	table_name += '.sql'
-  	text_writer(table_name,text)
+	table_name += '.sql'
+	text_writer(table_name,text)
   
 #end of inject challenges
 
@@ -57,4 +58,4 @@ list_tables = ['Android_Challenges.table','Assembly_Challenges.table','Blender_3
 		'Math_Challenges.table','PHP_Challenges.table','Python_Challenges.table','Resources_Challenges.table',
 		'Reversing_Challenges.table','Security_Challenges.table','Thinking_Challenges.table']
 		
-sql_parsing("Python_Challenges.table")	
+inject_challenges("Python_Challenges.table")	
